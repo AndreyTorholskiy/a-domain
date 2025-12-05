@@ -1,0 +1,5 @@
+http:
+  listener:
+      host: "0.0.0.0"
+      port: "8088"
+      connectionTimeout: "120000" # 2 minutes

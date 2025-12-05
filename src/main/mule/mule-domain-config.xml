@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain:mule-domain
+        xmlns:http="http://www.mulesoft.org/schema/mule/http"
+        xmlns="http://www.mulesoft.org/schema/mule/core"
+        xmlns:domain="http://www.mulesoft.org/schema/mule/ee/domain"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xsi:schemaLocation="
+               http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+               http://www.mulesoft.org/schema/mule/ee/domain http://www.mulesoft.org/schema/mule/ee/domain/current/mule-domain-ee.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+
+    <!-- configure here resource to be shared within the domain -->
+	<http:listener-config name="HTTP_Domain_Listener_config" doc:name="HTTP Listener config" doc:id="6093b9c9-95bd-492f-943c-d2b15d56fe45" >
+		<http:listener-connection host="${http.listener.host}" port="${http.listener.port}" connectionIdleTimeout="${http.listener.connectionTimeout}"/>
+	</http:listener-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="7e12ab4e-0312-470d-bcc9-2717181b1eb5" file="config\local-properties.yaml" />
+	<http:request-config name="HTTP_Request_config" doc:name="HTTP Request config" doc:id="c1e2908c-4e81-4a20-ae88-f52cad857aca" />
+
+</domain:mule-domain>
