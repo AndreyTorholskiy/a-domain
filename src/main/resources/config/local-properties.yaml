@@ -11,4 +11,10 @@ http:
     processAPI:
       host: "0.0.0.0"
       port: "8089"
-      basePath: "/a-flights-pa/api/v1"   
+      basePath: "/a-flights-pa/api/v1"
+      
+ampq:
+  host: "localhost"
+  port: "5672"
+  user: "AndriiDev"
+  password: "qwerty12345"   
