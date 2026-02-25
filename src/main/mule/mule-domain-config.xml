@@ -18,7 +18,7 @@ http://www.mulesoft.org/schema/mule/amqp http://www.mulesoft.org/schema/mule/amq
 	<amqp:config name="Local_RabbitMQ_AMQP_Config" doc:name="AMQP Config" doc:id="abdf5759-18cc-4800-83f1-3350a517f678" >
 		<amqp:connection host="${ampq.host}" port="${ampq.port}" username="${ampq.user}" password="${ampq.password}"/>
 	</amqp:config>
-	<http:request-config name="HTTP_Domain_Request_config" doc:name="HTTP Request config" doc:id="a2c3a554-a1d3-4dfc-89c9-eba562a04b16">
+	<http:request-config name="HTTP_Domain_Request_config" doc:name="HTTP Request config" doc:id="a2c3a554-a1d3-4dfc-89c9-eba562a04b16" responseTimeout="${http.requester.responseTimeout}">
 		<http:request-connection host="${http.requester.host}" port="${http.requester.port}" />
 	</http:request-config>
 

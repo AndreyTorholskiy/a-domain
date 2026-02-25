@@ -6,6 +6,7 @@ http:
   requester:
       host: "0.0.0.0"
       port: "8089"
+      responseTimeout: "120000" # 2 minutes 
 
 ampq:
   host: "localhost"
