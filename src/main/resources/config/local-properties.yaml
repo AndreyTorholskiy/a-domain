@@ -9,7 +9,8 @@ http:
       responseTimeout: "120000" # 2 minutes 
 
 ampq:
-  host: "localhost"
+  host: "hawk-01.rmq.cloudamqp.com"
   port: "5672"
-  user: "AndriiDev"
-  password: "qwerty12345"   
+  virtualHost: "dbyxvuzc"
+  user: "![ezA1G1UcR9wIslIHXUNNLQ==]"
+  password: "![sh5gWkvgzBsydLz7jxod6IgTi9lRhUTSy2T18V5P999VUvhZSRwsNg==]"   
