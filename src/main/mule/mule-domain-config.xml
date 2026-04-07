@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <domain:mule-domain
+        xmlns:secure-properties="http://www.mulesoft.org/schema/mule/secure-properties"
+        xmlns:amqp="http://www.mulesoft.org/schema/mule/amqp"
         xmlns:http="http://www.mulesoft.org/schema/mule/http"
         xmlns="http://www.mulesoft.org/schema/mule/core"
-        xmlns:domain="http://www.mulesoft.org/schema/mule/ee/domain"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xsi:schemaLocation="
+        xmlns:domain="http://www.mulesoft.org/schema/mule/ee/domain" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xsi:schemaLocation="
                http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
                http://www.mulesoft.org/schema/mule/ee/domain http://www.mulesoft.org/schema/mule/ee/domain/current/mule-domain-ee.xsd
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/amqp http://www.mulesoft.org/schema/mule/amqp/current/mule-amqp.xsd
+http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd">
 
-    <!-- configure here resource to be shared within the domain -->
 	<http:listener-config name="HTTP_Domain_Listener_config" doc:name="HTTP Listener config" doc:id="6093b9c9-95bd-492f-943c-d2b15d56fe45" >
 		<http:listener-connection host="${http.listener.host}" port="${http.listener.port}" connectionIdleTimeout="${http.listener.connectionTimeout}"/>
 	</http:listener-config>
-	<configuration-properties doc:name="Configuration properties" doc:id="7e12ab4e-0312-470d-bcc9-2717181b1eb5" file="config\local-properties.yaml" />
-	<http:request-config name="HTTP_Request_SystemAPI_config" doc:name="HTTP Request config" doc:id="c1e2908c-4e81-4a20-ae88-f52cad857aca" basePath="${http.requester.systemAPI.basePath}">
-		<http:request-connection host="${http.requester.systemAPI.host}" port="${http.requester.systemAPI.port}" />
+	<configuration-properties doc:name="Configuration properties" doc:id="7e12ab4e-0312-470d-bcc9-2717181b1eb5" file="config/${env}-properties.yaml" />
+	<amqp:config name="RabbitMQ_CloudAMQP_Config" doc:name="AMQP Config" doc:id="abdf5759-18cc-4800-83f1-3350a517f678" >
+		<amqp:connection host="${amqp.host}" port="${amqp.port}" username="${secure::amqp.user}" password="${secure::amqp.password}" virtualHost="${amqp.virtualHost}"/>
+	</amqp:config>
+	<http:request-config name="HTTP_Domain_Request_config" doc:name="HTTP Request config" doc:id="a2c3a554-a1d3-4dfc-89c9-eba562a04b16" responseTimeout="${http.requester.responseTimeout}">
+		<http:request-connection host="${http.requester.host}" port="${http.requester.port}" />
 	</http:request-config>
-	<http:request-config name="HTTP_Request_ProcessAPI_config" doc:name="HTTP Request config" doc:id="a2c3a554-a1d3-4dfc-89c9-eba562a04b16" basePath="${http.requester.processAPI.basePath}">
-		<http:request-connection host="${http.requester.processAPI.host}" port="${http.requester.processAPI.port}" />
-	</http:request-config>
-
+	<global-property doc:name="Global Property" doc:id="14ccc11d-e810-4095-a092-4eec8a916449" name="env" value="local" />
+	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="7d4758b1-5fb2-48b3-80e2-27cde6deec8e" file="config/${env}-properties.yaml" key="${secure.key}" >
+		<secure-properties:encrypt algorithm="Blowfish" />
+	</secure-properties:config>
 </domain:mule-domain>

@@ -4,11 +4,13 @@ http:
       port: "8089"
       connectionTimeout: "120000" # 2 minutes
   requester:
-    systemAPI:
       host: "0.0.0.0"
       port: "8089"
-      basePath: "/a-flights-sa/api/v1"
-    processAPI:
-      host: "0.0.0.0"
-      port: "8089"
-      basePath: "/a-flights-pa/api/v1"   
+      responseTimeout: "120000" # 2 minutes 
+
+amqp:
+  host: "hawk-01.rmq.cloudamqp.com"
+  port: "5672"
+  virtualHost: "dbyxvuzc"
+  user: "![ezA1G1UcR9wIslIHXUNNLQ==]"
+  password: "![sh5gWkvgzBsydLz7jxod6IgTi9lRhUTSy2T18V5P999VUvhZSRwsNg==]"   
