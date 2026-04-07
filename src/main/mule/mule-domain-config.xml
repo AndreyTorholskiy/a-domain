@@ -16,7 +16,7 @@ http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/sc
 	</http:listener-config>
 	<configuration-properties doc:name="Configuration properties" doc:id="7e12ab4e-0312-470d-bcc9-2717181b1eb5" file="config/${env}-properties.yaml" />
 	<amqp:config name="RabbitMQ_CloudAMQP_Config" doc:name="AMQP Config" doc:id="abdf5759-18cc-4800-83f1-3350a517f678" >
-		<amqp:connection host="${ampq.host}" port="${ampq.port}" username="${secure::ampq.user}" password="${secure::ampq.password}" virtualHost="${ampq.virtualHost}"/>
+		<amqp:connection host="${amqp.host}" port="${amqp.port}" username="${secure::amqp.user}" password="${secure::amqp.password}" virtualHost="${amqp.virtualHost}"/>
 	</amqp:config>
 	<http:request-config name="HTTP_Domain_Request_config" doc:name="HTTP Request config" doc:id="a2c3a554-a1d3-4dfc-89c9-eba562a04b16" responseTimeout="${http.requester.responseTimeout}">
 		<http:request-connection host="${http.requester.host}" port="${http.requester.port}" />

@@ -8,7 +8,7 @@ http:
       port: "8089"
       responseTimeout: "120000" # 2 minutes 
 
-ampq:
+amqp:
   host: "hawk-01.rmq.cloudamqp.com"
   port: "5672"
   virtualHost: "dbyxvuzc"
